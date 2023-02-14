@@ -54,10 +54,20 @@ const app = new Vue({
     },
 
     methods: {
-        filter(){
+        filterPrice(){
             document.getElementById('price').value = this.price;
+        },
+
+        filterRate(){
             document.getElementById('rate').value = this.rate;
+        },
+
+        filterStars(){
             document.getElementById('stars').value = this.stars;
+        },
+
+        resetFilters() {
+            document.getElementById('reset').value = true;
         },
 
         showReviewForm() {
@@ -75,28 +85,9 @@ const app = new Vue({
                 el[i].style.display = "block";
             }
         },
+
         showAddPhoto() {
             document.getElementById("div2").style.display = "block";
-        },
-        showRate(e) {
-            this.rate = e.target.value;
-            document.getElementById('rate-value').innerHTML = this.rate;
-        },
-        showComfort(e) {
-            this.comfort = e.target.value;
-            document.getElementById('comfort-value').innerHTML = this.comfort;
-        },
-        showClean(e) {
-            this.clean = e.target.value;
-            document.getElementById('clean-value').innerHTML = this.clean;
-        },
-        showStaff(e) {
-            this.staff = e.target.value;
-            document.getElementById('staff-value').innerHTML = this.staff;
-        },
-        showLocat(e) {
-            this.locat = e.target.value;
-            document.getElementById('locat-value').innerHTML = this.locat;
         },
 
         datePicker() {

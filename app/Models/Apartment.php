@@ -60,10 +60,46 @@ class Apartment extends Model
     public function scopeBestApartments($query)
     {
         return $query
-            //->select(DB::raw('apartments.*, count(*) as count'))
-            //->join('reviews', 'apartment_id', '=', 'apartments.id')
-            ->where('apartments.rate','>', 5);
-            //->groupBy('apartments.id')
-            //->orderByDesc('count');
+            ->select(DB::raw('apartments.*, count(*) as count'))
+            ->join('reviews', 'apartment_id', '=', 'apartments.id')
+            ->where('apartments.rate','>', 5)
+            ->groupBy('apartments.id')
+            ->orderByDesc('count');
+    }
+
+    public function scopeSortBy($query, $param)
+    {
+        if($param == 'price-descending') {
+            return $query->orderByDesc('price');
+        } elseif ($param == 'price-ascending') {
+            return $query->orderBy('price');
+        } elseif ($param == 'stars') {
+            return $query->orderByDesc('stars');
+        } elseif ($param == 'rate') {
+            return $query->orderByDesc('rate');
+        } elseif ($param == 'location') {
+            return $query->orderByDesc('location');
+        } elseif ($param == 'clean') {
+            return $query->orderByDesc('clean');
+        } elseif ($param == 'comfort') {
+            return $query->orderByDesc('comfort');
+        } elseif ($param == 'staff') {
+            return $query->orderByDesc('staff');
+        } else { return null; }
+    }
+
+    public function scopeFilterByPrice($query, $param)
+    {
+        return $query->whereIn('price', $param);
+    }
+
+    public function scopeFilterByRate($query, $param)
+    {
+        return $query->where('rate', '>=', $param);
+    }
+
+    public function scopeFilterByStars($query, $param)
+    {
+        return $query->where('stars', $param);
     }
 }

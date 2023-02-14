@@ -22,7 +22,7 @@
                     <v-range-slider
                         label="Ціна"
                         v-model="price"
-                        @input="filter"
+                        @input="filterPrice"
                         min="{{$apartments->min('price')}}"
                         max="{{$apartments->max('price')}}"
                         thumb-label="always"
@@ -32,7 +32,7 @@
                     <v-slider
                         label="Мінімальний рейтинг"
                         v-model="rate"
-                        @input="filter"
+                        @input="filterRate"
                         max="10"
                         min="1"
                         thumb-label="always"
@@ -41,7 +41,7 @@
                     <input type="hidden" name="rate" id="rate">
                     <v-slider
                         label="Кількість зірок"
-                        @input="filter"
+                        @input="filterStars"
                         v-model="stars"
                         max="5"
                         min="1"
@@ -49,7 +49,9 @@
                         class="mt-4"
                     ></v-slider>
                     <input type="hidden" name="stars" id="stars">
-                    <v-btn type="submit" color="blue" outlined class="filter-btn">Застосувати фільтри</v-btn>
+                    <input type="hidden" name="reset" id="reset">
+                    <v-btn type="submit" color="blue" outlined >Застосувати фільтри</v-btn>
+                    <v-btn @click="resetFilters" type="submit" color="orange" text class="mt-2">Очистити фільтри</v-btn>
                 </v-col>
             </v-row>
         </form>
