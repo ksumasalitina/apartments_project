@@ -27,7 +27,7 @@
                     <p><b>Адреса: </b>
                         {{$apartment->street}}, {{$apartment->building}},
                         {{$apartment->city->city}}, {{$apartment->postcode}}</p>
-                    <v-btn color="blue" text width="45%">Показати на карті</v-btn>
+                    <google-map latitude="{{$apartment->latitude}}" longitude="{{$apartment->longitude}}"></google-map>
                     <div class="mt-7">
                         <v-btn class="in-block mr-2" color="blue" outlined>Переглянути номери</v-btn>
                         <v-btn class="in-block" color="black" outlined>Відгуки</v-btn>
@@ -45,3 +45,9 @@
         </div>
     </main>
 @endsection
+<script>
+    import GoogleMap from "../../js/components/GoogleMap";
+    export default {
+        components: {GoogleMap}
+    }
+</script>

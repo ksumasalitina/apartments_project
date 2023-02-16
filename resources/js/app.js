@@ -8,10 +8,18 @@ import Vuetify from "vuetify";
 import 'vuetify/dist/vuetify.min.css';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import GmapVue from 'gmap-vue';
+import * as frontendCredentials from './env/env';
 
 require('./bootstrap');
 
 Vue.use(Vuetify);
+Vue.use(GmapVue, {
+    load: {
+        key: frontendCredentials.GOOGLE_MAP_KEY,
+        libraries: 'places'
+    }
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,7 +36,7 @@ Vue.use(Vuetify);
 //Vue.component('aparts-component', require('./components/ShowAparts.vue').default);
 //Vue.component('find-form', require('./components/FindForm').default);
 
-//Vue.component('home-component', require('./components/FindApartmentsComponent.vue').default);
+Vue.component('google-map', require('./components/GoogleMap.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
