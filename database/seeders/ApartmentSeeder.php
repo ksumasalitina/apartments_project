@@ -34,15 +34,13 @@ class ApartmentSeeder extends Seeder
                 'description' => $faker->paragraph
             ]);
         }*/
+
         $apartments = Apartment::all();
 
         foreach ($apartments as $apartment){
             Apartment::query()->where('id',$apartment->id)->update([
-                'rate' => rand(10,100)/10,
-                'comfort' => rand(10,100)/10,
-                'clean' => rand(10,100)/10,
-                'staff' => rand(10,100)/10,
-                'location' => rand(10,100)/10,
+                'latitude' => $faker->latitude,
+                'longitude' => $faker->longitude,
             ]);
         }
     }

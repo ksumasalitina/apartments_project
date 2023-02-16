@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FindRequest;
 use App\Repositories\Apartment\ApartmentRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ApartmentController extends Controller
 {
@@ -27,6 +28,15 @@ class ApartmentController extends Controller
 
     public function filter(Request $request)
     {
-        return view('apartments.find', $this->apartmentRepository->filter($request));
+        if(Session::get('city')){
+            return view('apartments.find', $this->apartmentRepository->filter($request));
+        } else {
+            return redirect(route('home'));
+        }
+    }
+
+    public function show($id)
+    {
+        return view('apartments.show', $this->apartmentRepository->showApartment($id));
     }
 }

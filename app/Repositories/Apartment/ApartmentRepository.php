@@ -62,11 +62,14 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             $result = $result->sortBy($request['sort']);
         }
 
-        return ['apartments'=>$result->get(), 'cities'=>$cities, 'city'=>$city];
+        return ['apartments' => $result->get(), 'cities' => $cities, 'city' => $city];
     }
 
     public function showApartment($id)
-{
-    // TODO: Implement showApartment() method.
-}
+    {
+        $apartment = Apartment::query()->findOrFail($id);
+        $cities = City::all();
+
+        return ['apartment' => $apartment, 'cities' => $cities];
+    }
 }

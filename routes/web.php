@@ -18,6 +18,7 @@ Route::controller(ApartmentController::class)->group(function (){
     Route::get('/', 'index')->name('home');
     Route::get('/find','find')->name('find');
     Route::get('/filter','filter')->name('filter');
+    Route::get('/show/{id}','show')->name('show');
 });
 
 require __DIR__.'/auth.php';

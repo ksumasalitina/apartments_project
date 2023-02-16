@@ -31,7 +31,6 @@
     </v-app-bar>
     <v-main class="mt-5">
         <div id="app">
-
             @yield('content')
         </div>
     </v-main>

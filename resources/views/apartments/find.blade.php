@@ -60,7 +60,7 @@
                                         </v-btn>
                                     </div>
                                     <div class="in-block">
-                                        <v-btn color="black" outlined>Переглянути</v-btn>
+                                        <v-btn color="black" href="{{route('show',$x->id)}}" outlined target="_blank">Переглянути</v-btn>
                                     </div>
                                 </div>
                             </div>
