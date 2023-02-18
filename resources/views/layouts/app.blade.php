@@ -34,7 +34,7 @@
             @yield('content')
         </div>
     </v-main>
-    <v-footer padless>
+    <v-footer padless color="white">
         <v-col class="text-center" cols="12">
             <p class="text-center text-muted">© 2023 Company, Inc</p>
         </v-col>

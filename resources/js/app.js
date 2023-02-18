@@ -58,7 +58,8 @@ const app = new Vue({
     },
 
     mounted() {
-        this.datePicker()
+        this.datePickerMain();
+        this.datePickerChange();
     },
 
     methods: {
@@ -98,7 +99,7 @@ const app = new Vue({
             document.getElementById("div2").style.display = "block";
         },
 
-        datePicker() {
+        datePickerMain() {
             let dpMin, dpMax;
 
             dpMin = new AirDatepicker('#startDate', {
@@ -111,6 +112,28 @@ const app = new Vue({
             })
 
             dpMax = new AirDatepicker('#endDate', {
+                minDate: new Date(),
+                onSelect({date}) {
+                    dpMin.update({
+                        maxDate: date
+                    })
+                }
+            })
+        },
+
+        datePickerChange() {
+            let dpMin, dpMax;
+
+            dpMin = new AirDatepicker('#startDateChange', {
+                minDate: new Date(),
+                onSelect({date}) {
+                    dpMax.update({
+                        minDate: date.setDate(date.getDate() + 1)
+                    })
+                }
+            })
+
+            dpMax = new AirDatepicker('#endDateChange', {
                 minDate: new Date(),
                 onSelect({date}) {
                     dpMin.update({

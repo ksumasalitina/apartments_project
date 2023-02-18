@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="dialog" width="500">
+        <v-dialog v-model="dialog" width="700">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn color="blue" text width="45%" v-bind="attrs" v-on="on">Показати на карті</v-btn>
             </template>

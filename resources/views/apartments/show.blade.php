@@ -29,7 +29,7 @@
                         {{$apartment->city->city}}, {{$apartment->postcode}}</p>
                     <google-map latitude="{{$apartment->latitude}}" longitude="{{$apartment->longitude}}"></google-map>
                     <div class="mt-7">
-                        <v-btn class="in-block mr-2" color="blue" outlined>Переглянути номери</v-btn>
+                        <v-btn class="in-block mr-2" color="blue" href="#rooms" outlined>Переглянути номери</v-btn>
                         <v-btn class="in-block" color="black" outlined>Відгуки</v-btn>
                     </div>
                 </div>
@@ -38,15 +38,39 @@
                          class="d-flex align-items-center"/>
                 </div>
                 <div class="col-auto align-items-center">
-                        <img src="{{$apartment->image_2}}" width="225" height="190" alt="Hotel photo" class="mb-4"/><br>
-                        <img src="{{$apartment->image_3}}" width="225" height="190" alt="Hotel photo"/>
+                    <img src="{{$apartment->image_2}}" width="225" height="190" alt="Hotel photo" class="mb-4"/><br>
+                    <img src="{{$apartment->image_3}}" width="225" height="190" alt="Hotel photo"/>
                 </div>
             </div>
         </div>
+
     </main>
+    <form class="mb-6 mt-5" action="{{route('show',$apartment->id)}}" method="GET">
+        @csrf
+        <v-card class="center-box" elevation="1" width="55%">
+            <v-card-text class="center-box w-100">
+                <v-row>
+                    <v-col>
+                        <h6 class="text--primary text-h6">Дати подорожі:</h6>
+                    </v-col>
+                    <v-col>
+                        <input value="{{\Illuminate\Support\Facades\Session::get('start_date')}}" type="text" id="startDateChange" name="startDate" class="find-form w-100" placeholder="З" />
+                    </v-col>
+                    <v-col>
+                        <input value="{{\Illuminate\Support\Facades\Session::get('end_date')}}" type="text" id="endDateChange" name="endDate" class="find-form w-100" placeholder="По" />
+                    </v-col>
+                    <v-col>
+                        <v-btn type="submit" color="red">Змінити дати</v-btn>
+                    </v-col>
+                </v-row>
+            </v-card-text>
+        </v-card>
+    </form>
+    @include('apartments.show-rooms')
 @endsection
 <script>
     import GoogleMap from "../../js/components/GoogleMap";
+
     export default {
         components: {GoogleMap}
     }

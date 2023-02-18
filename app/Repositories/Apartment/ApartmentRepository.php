@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use App\Models\Booking;
 use App\Models\City;
 use App\Http\Requests\FindRequest;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -65,11 +66,23 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         return ['apartments' => $result->get(), 'cities' => $cities, 'city' => $city];
     }
 
-    public function showApartment($id)
+    public function showApartment(Request $request, $id)
     {
+        if(filled($request['startDate']) && filled($request['endDate'])){
+            Session::put('start_date', $request['startDate']);
+            Session::put('end_date', $request['endDate']);
+        }
+
         $apartment = Apartment::query()->findOrFail($id);
         $cities = City::all();
 
-        return ['apartment' => $apartment, 'cities' => $cities];
+        $rooms = null;
+
+        if(Session::get('start_date')){
+            $bookedRooms = Booking::query()->findBookedRooms(Session::get('start_date'), Session::get('end_date'))->get();
+            $rooms = Room::query()->findAvailableRooms($id, $bookedRooms)->get();
+        }
+
+        return ['apartment' => $apartment, 'cities' => $cities, 'rooms' => $rooms];
     }
 }
