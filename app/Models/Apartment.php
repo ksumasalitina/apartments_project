@@ -20,6 +20,11 @@ class Apartment extends Model
         'rate', 'comfort', 'clean', 'staff', 'location'
     ];
 
+    public function facilities()
+    {
+        return $this->belongsToMany(Facility::class);
+    }
+
     public function rooms()
     {
         return $this->hasMany(Room::class);

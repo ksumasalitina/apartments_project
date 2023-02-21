@@ -1,8 +1,8 @@
 @section('rooms')
     @if($rooms)
-        <div id="rooms">
-            <h2 class="find-apart rooms-header" align="center">Доступні номери для бронювання:</h2>
-            <div class="center-box w-75">
+        <div id="rooms" style="margin-top: 5%">
+            <h2 class="find-apart rooms-header">Доступні номери для бронювання:</h2>
+            <div >
                 <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -30,6 +30,6 @@
             </div>
         </div>
     @else
-        <h2 class="find-apart rooms-header" align="center"><em>Оберіть дати подорожі</em></h2>
+        <h2 class="find-apart rooms-header"><em>Оберіть дати подорожі</em></h2>
     @endif
 @show
