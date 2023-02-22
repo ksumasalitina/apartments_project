@@ -7,17 +7,6 @@ use Illuminate\Contracts\Validation\Rule;
 class DateRule implements Rule
 {
     /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    protected $startDate;
-    public function __construct($startDate)
-    {
-        $this->startDate = $startDate;
-    }
-
-    /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
@@ -26,7 +15,9 @@ class DateRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $value > $this->startDate;
+        $val = new \DateTime($value);
+        $difference = $val->diff(new \DateTime("now"));
+        return  $difference->y >= 18;
     }
     /**
      * Get the validation error message.
@@ -35,6 +26,6 @@ class DateRule implements Rule
      */
     public function message()
     {
-        return 'End date can not be smaller than the start date.';
+        return 'You must be at least 18 years old to register';
     }
 }

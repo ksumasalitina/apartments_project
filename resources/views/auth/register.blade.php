@@ -1,52 +1,112 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.app')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+@section('title')
+    Реєстрація
+@endsection
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+@section('content')
+    <v-app>
+        <v-main>
+            <v-container>
+                <v-layout align-center justify-center>
+                    <v-flex xs12 sm8 md4>
+                        <v-card class="elevation-12">
+                            <v-toolbar dark color="#b32d2e">
+                                <v-toolbar-title>Реєстрація</v-toolbar-title>
+                            </v-toolbar>
+                            <v-card-text>
+                            <span class="alert-danger">
+                        @error('first_name')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('last_name')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('email')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('password')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('dob')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('nationality')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                                @error('phone')
+                            <p class="text-danger center-text">{{$message}}</p>
+                        @enderror
+                    </span>
+                                <form action="{{route('register')}}" method="POST">
+                                    @csrf
+                                    <v-text-field
+                                        label="Імʼя *"
+                                        type="text"
+                                        name="first_name"
+                                        required
+                                    ></v-text-field>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                                    <v-text-field
+                                        label="Прізвище *"
+                                        type="text"
+                                        name="last_name"
+                                        required
+                                    ></v-text-field>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+                                    <v-text-field
+                                        label="Email *"
+                                        type="email"
+                                        name="email"
+                                        required
+                                    ></v-text-field>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                                    <v-text-field
+                                        label="Пароль *"
+                                        type="password"
+                                        name="password"
+                                        required
+                                    ></v-text-field>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                                    <v-text-field
+                                        label="Підтвердіть пароль *"
+                                        type="password"
+                                        name="password_confirmation"
+                                        required
+                                    ></v-text-field>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required />
+                                    <v-text-field
+                                        label="Номер телефону"
+                                        type="text"
+                                        name="phone"
+                                        required
+                                    ></v-text-field>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+                                    <input
+                                        placeholder="Дата народження *"
+                                        type="text"
+                                        class="w-100 mb-8 mt-5 dob"
+                                        name="dob"
+                                        id="dob"
+                                        required
+                                    />
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+                                    <select class="find-form form-select" name="nationality">
+                                        <option disabled selected>Національність</option>
+                                        @foreach($countries as $c)
+                                            <option value="{{$c->name}}">{{$c->name}}</option>
+                                        @endforeach
+                                    </select>
 
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                                    <v-btn type="submit" dark class="mt-4" color="#b32d2e" width="100%">
+                                        Зареєструватися
+                                    </v-btn>
+                                </form>
+                            </v-card-text>
+                        </v-card>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-main>
+    </v-app>
+@endsection

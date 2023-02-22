@@ -19,18 +19,23 @@
             </div>
             <div style="margin-left: auto">
                 @auth("web")
-                    <v-btn href="" color="blue" text>Вітаємо,</v-btn>
-                    <v-btn href="" color="red" outlined>Вийти</v-btn>
+                    <v-btn href="" color="blue" text>Вітаємо, {{auth()->user()->first_name}}</v-btn>
+                    <v-btn href="{{route('logout')}}" color="red" outlined>Вийти</v-btn>
                 @endauth
                 @guest("web")
-                    <v-btn href="" color="red" outlined>Реєстарція</v-btn>
-                    <v-btn href="" color="red" outlined>Вхід</v-btn>
+                    <v-btn href="{{route('register-page')}}" target="_blank" color="red" outlined>Реєстарція</v-btn>
+                    <v-btn href="{{route('login-page')}}" target="_blank" color="red" outlined>Вхід</v-btn>
                 @endguest
             </div>
         </div>
     </v-app-bar>
     <v-main class="mt-5">
         <div id="app">
+            @if ($message = Session::get('message'))
+                <div class="alert alert-success w-75 center-box">
+                    <p align="center">{{ $message }}</p>
+                </div>
+            @endif
             @yield('content')
         </div>
     </v-main>

@@ -60,6 +60,7 @@ const app = new Vue({
     mounted() {
         this.datePickerMain();
         this.datePickerChange();
+        this.datePickerDOB();
     },
 
     methods: {
@@ -141,6 +142,10 @@ const app = new Vue({
                     })
                 }
             })
+        },
+
+        datePickerDOB(){
+            new AirDatepicker('#dob');
         }
     },
 });

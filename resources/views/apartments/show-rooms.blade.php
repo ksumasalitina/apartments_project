@@ -30,6 +30,6 @@
             </div>
         </div>
     @else
-        <h2 class="find-apart rooms-header"><em>Оберіть дати подорожі</em></h2>
+        <h2>Щоб переглянути доступні номери, оберіть дати подорожі</h2>
     @endif
 @show

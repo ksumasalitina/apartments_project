@@ -72,7 +72,7 @@
                     <div class="in-block mr-2 ml-2">
                         <v-row>
                             <v-col>
-                                <v-card width="400" height="200" elevation="4">
+                                <v-card width="300" height="200" elevation="4">
                                     <v-card-title>
                                         <v-avatar color="warning lighten-2" size="40">
                                             <span>{{substr($review->user->first_name,0,1)}}{{substr($review->user->last_name,0,1)}}</span>
