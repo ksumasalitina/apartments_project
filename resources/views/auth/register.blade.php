@@ -10,7 +10,7 @@
             <v-container>
                 <v-layout align-center justify-center>
                     <v-flex xs12 sm8 md4>
-                        <v-card class="elevation-12">
+                        <v-card class="elevation-12 mb-5">
                             <v-toolbar dark color="#b32d2e">
                                 <v-toolbar-title>Реєстрація</v-toolbar-title>
                             </v-toolbar>
@@ -76,7 +76,7 @@
                                     ></v-text-field>
 
                                     <v-text-field
-                                        label="Номер телефону"
+                                        label="Номер телефону *"
                                         type="text"
                                         name="phone"
                                         required
@@ -92,7 +92,7 @@
                                     />
 
                                     <select class="find-form form-select" name="nationality">
-                                        <option disabled selected>Національність</option>
+                                        <option disabled selected>Національність *</option>
                                         @foreach($countries as $c)
                                             <option value="{{$c->name}}">{{$c->name}}</option>
                                         @endforeach
@@ -100,6 +100,10 @@
 
                                     <v-btn type="submit" dark class="mt-4" color="#b32d2e" width="100%">
                                         Зареєструватися
+                                    </v-btn>
+
+                                    <v-btn color="#b32d2e" text width="100%" href="{{route('login')}}">
+                                        В мене вже є аккаунт
                                     </v-btn>
                                 </form>
                             </v-card-text>

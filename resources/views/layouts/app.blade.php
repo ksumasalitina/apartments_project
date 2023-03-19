@@ -24,7 +24,7 @@
                 @endauth
                 @guest("web")
                     <v-btn href="{{route('register-page')}}" target="_blank" color="red" outlined>Реєстарція</v-btn>
-                    <v-btn href="{{route('login-page')}}" target="_blank" color="red" outlined>Вхід</v-btn>
+                    <v-btn href="{{route('login')}}" target="_blank" color="red" outlined>Вхід</v-btn>
                 @endguest
             </div>
         </div>

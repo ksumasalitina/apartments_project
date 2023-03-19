@@ -6,7 +6,6 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -36,8 +35,10 @@ class AuthRepository implements AuthRepositoryInterface
 
     public function login(LoginRequest $request)
     {
-        if (Auth::guard("web")->attempt($request->toArray())) {
-            return redirect()->back();
+        $credentials = $request->only(['email','password']);
+
+        if (Auth::guard("web")->attempt($credentials)) {
+            return redirect(route('home'));
         }
 
         return redirect(route('login'))->withErrors(['email' => "Неправильний email або пароль"]);

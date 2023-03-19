@@ -28,8 +28,8 @@ Route::controller(AuthController::class)->group(function (){
     Route::middleware("guest")->group(function (){
         Route::get('/page/register','registerPage')->name('register-page');
         Route::post('/register','register')->name('register');
-        Route::get('/page/login','loginPage')->name('login-page');
-        Route::post('/login','login')->name('login');
+        Route::get('/page/login','loginPage')->name('login');
+        Route::post('/login','login')->name('login.process');
         Route::get('/page/reset','resetPasswordPage')->name('reset-password-page');
         Route::post('/reset','resetPassword')->name('reset-password');
     });
