@@ -46,6 +46,11 @@ class Apartment extends Model
             'apartment_id', 'user_id');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class);

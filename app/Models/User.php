@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'dob',
         'phone',
         'nationality',
-        'avatar'
+        'avatar',
     ];
 
     /**
@@ -50,7 +50,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'dob' => 'datetime',
         'phone' => 'string',
         'nationality' => 'string',
-        'email_verified_at' => 'datetime',
     ];
 
     public function bookings()
@@ -61,5 +60,21 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Apartment::class, 'favorites',
+            'user_id', 'apartment_id');
+    }
+
+    public function apartments()
+    {
+        return $this->belongsToMany(Apartment::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }

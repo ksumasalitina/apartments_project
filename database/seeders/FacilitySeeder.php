@@ -16,7 +16,7 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        /*$facilities = [
+        $facilities = [
             ['name'=> 'Парковка', 'icon'=>'parking'],
             ['name'=> 'WiFi', 'icon'=>'wifi'],
             ['name'=> 'Сімейні номери', 'icon'=>'human-male-female-child'],
@@ -35,7 +35,7 @@ class FacilitySeeder extends Seeder
             ['name'=> 'Холодильник у номерах', 'icon'=>'fridge-outline'],
         ];
 
-        DB::table('facilities')->insert($facilities);*/
+        DB::table('facilities')->insert($facilities);
 
         $apartments = Apartment::all();
 

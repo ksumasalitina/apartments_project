@@ -30,5 +30,16 @@ class UserSeeder extends Seeder
                 'nationality' => $faker->country
             ]);
         }
+        DB::table('users')->insert([
+            'first_name' => $faker->firstName,
+            'last_name' => $faker->lastName,
+            'email' => 'admin@gmail.com',
+            'email_verified_at' => $faker->dateTime,
+            'password' => Hash::make('12345678'),
+            'dob' => $faker->date,
+            'phone' => $faker->phoneNumber,
+            'nationality' => $faker->country,
+            'is_admin' => true
+        ]);
     }
 }
