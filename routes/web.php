@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -42,3 +43,11 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect(route('home'));
 })->middleware(['auth','signed'])->name('verification.verify');
+
+
+Route::controller(FavoriteController::class)->middleware('auth')->prefix('favorites')
+    ->group(function (){
+    Route::get('/add/{id}','add')->name('favorite.add');
+    Route::get('/remove/{id}','remove')->name('favorite.remove');
+    Route::get('/','showAll')->name('favorites');
+});
