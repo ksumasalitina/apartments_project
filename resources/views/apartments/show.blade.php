@@ -11,10 +11,16 @@
             <div
                 class="row g-0 rounded-4 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
+                    @if(Auth::check())
                     @if(Auth::user()->favorites()->where('apartment_id',$apartment->id)->exists())
                         <a class="d-flex justify-content-end link-none" href="{{route('favorite.remove',$apartment->id)}}">
                             <v-icon>mdi-heart</v-icon>
                         </a>
+                    @else
+                        <a class="d-flex justify-content-end link-none" href="{{route('favorite.add',$apartment->id)}}">
+                            <v-icon>mdi-heart-outline</v-icon>
+                        </a>
+                    @endif
                     @else
                         <a class="d-flex justify-content-end link-none" href="{{route('favorite.add',$apartment->id)}}">
                             <v-icon>mdi-heart-outline</v-icon>

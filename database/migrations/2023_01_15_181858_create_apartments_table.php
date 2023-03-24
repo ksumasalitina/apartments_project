@@ -16,22 +16,24 @@ return new class extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('city');
+            $table->string('type');
             $table->string('building');
             $table->string('street');
             $table->string('postcode');
             $table->string('email');
-            $table->string('phone');
             $table->integer('stars');
             $table->text('image_1');
             $table->text('image_2');
             $table->text('image_3');
             $table->text('description');
-            $table->integer('rate');
-            $table->integer('comfort');
-            $table->integer('clean');
-            $table->integer('staff');
-            $table->integer('location');
+            $table->float('rate')->default(0);
+            $table->float('comfort')->default(0);
+            $table->float('clean')->default(0);
+            $table->float('staff')->default(0);
+            $table->float('location')->default(0);
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('moderation')->default('processing');
             $table->timestamps();
         });
     }

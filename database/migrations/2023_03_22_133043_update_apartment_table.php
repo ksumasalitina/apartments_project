@@ -14,12 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('apartments', function (Blueprint $table) {
-            $table->dropColumn('city');
-
             $table->foreignId('city_id')->references('id')->on('cities')
                 ->onDelete('cascade');
         });
-
     }
 
     /**
@@ -30,9 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('apartments', function (Blueprint $table) {
-            $table->string('city');
-
-            $table->dropColumn('city_id');
+            $table->dropForeign('apartments_city_id_foreign');
         });
     }
 };

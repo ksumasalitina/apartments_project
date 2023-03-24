@@ -107,10 +107,16 @@
                                 <p class="card-text mb-3">{{$x->description}}</p>
                                 <div class="d-flex justify-content-end">
                                     <div class="in-block mr-2">
-                                        @if(Auth::user()->favorites()->where('apartment_id',$x->id)->exists())
-                                            <v-btn href="{{route('favorite.remove',$x->id)}}" text>
+                                        @if(Auth::check())
+                                            @if(Auth::user()->favorites()->where('apartment_id',$x->id)->exists())
+                                                <v-btn href="{{route('favorite.remove',$x->id)}}" text>
                                                     <v-icon>mdi-heart</v-icon>
-                                            </v-btn>
+                                                </v-btn>
+                                            @else
+                                                <v-btn href="{{route('favorite.add',$x->id)}}" text>
+                                                    <v-icon>mdi-heart-outline</v-icon>
+                                                </v-btn>
+                                            @endif
                                         @else
                                             <v-btn href="{{route('favorite.add',$x->id)}}" text>
                                                 <v-icon>mdi-heart-outline</v-icon>

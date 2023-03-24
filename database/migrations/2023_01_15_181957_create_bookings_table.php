@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamp('check_out');
             $table->integer('people');
             $table->decimal('total');
-            $table->string('status');
+            $table->string('status')->default('processing');
             $table->timestamps();
         });
     }
