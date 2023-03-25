@@ -32,6 +32,11 @@ class ApartmentSeeder extends Seeder
                 'image_2' => $faker->imageUrl,
                 'image_3' => $faker->imageUrl,
                 'description' => $faker->paragraph,
+                'rate' => rand(1,10),
+                'location' => rand(1,10),
+                'staff' => rand(1,10),
+                'clean' => rand(1,10),
+                'comfort'=> rand(1,10),
                 'latitude' => $faker->latitude,
                 'longitude' => $faker->longitude,
                 'moderation' => 'approved'

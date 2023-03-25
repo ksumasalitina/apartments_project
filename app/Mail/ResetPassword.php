@@ -13,7 +13,7 @@ class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $password;
+    public $password;
 
     /**
      * Create a new message instance.
@@ -46,6 +46,7 @@ class ResetPassword extends Mailable
     {
         return new Content(
             view: 'emails.reset-password',
+
         );
     }
 

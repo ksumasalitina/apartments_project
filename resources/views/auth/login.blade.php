@@ -42,7 +42,9 @@
                                     <v-btn type="submit" dark class="mt-4" color="#b32d2e" width="100%">
                                         Увійти
                                     </v-btn>
-                                    <v-btn color="#b32d2e" text width="100%">Забули пароль?</v-btn>
+                                    <v-btn color="#b32d2e" text width="100%" href="{{route('reset-password-page')}}">
+                                        Забули пароль?
+                                    </v-btn>
                                 </form>
                             </v-card-text>
                         </v-card>

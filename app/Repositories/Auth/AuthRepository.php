@@ -58,7 +58,7 @@ class AuthRepository implements AuthRepositoryInterface
         $user->password = Hash::make($password);
         $user->save();
         Mail::to($user->email)->send(new ResetPassword($password));
-        return redirect(route('login'));
+        return redirect(route('login'))->with('message','Вам надіслано email з новим паролем');
     }
 
     public function sendVerificationEmail(Request $request)
