@@ -53,7 +53,9 @@ const app = new Vue({
             prev: 1,
             price: [1,1000],
             rate: null,
-            stars: null
+            stars: null,
+            url: null,
+            img: null
         }
     },
 
@@ -96,8 +98,15 @@ const app = new Vue({
             }
         },
 
-        showAddPhoto() {
-            document.getElementById("div2").style.display = "block";
+        showAddAvatar() {
+            document.getElementById('fileInput').click();
+        },
+
+        handleFileUpload(image) {
+            let url = URL.createObjectURL(image);
+            //document.getElementById('avatar').src = url;
+            this.$refs.avatar.src = url;
+            console.log(url);
         },
 
         datePickerMain() {

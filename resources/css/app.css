@@ -114,7 +114,7 @@ left: 0; bottom: 0;
 
 .round {
     border-radius: 100px; /* Радиус скругления */
-    box-shadow: 0 0 0 0 grey, 0 0 13px #333; /* Параметры теней */
+    box-shadow: 0 0 0 0 grey, 0 0 5px #333; /* Параметры теней */
     margin-right: 50%;
     margin-left: 40%;
     margin-bottom: 10px;

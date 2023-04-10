@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -50,4 +51,11 @@ Route::controller(FavoriteController::class)->middleware('auth')->prefix('favori
     Route::get('/add/{id}','add')->name('favorite.add');
     Route::get('/remove/{id}','remove')->name('favorite.remove');
     Route::get('/','showAll')->name('favorites');
+});
+
+Route::controller(ProfileController::class)->middleware('auth')->prefix('profile')
+    ->group(function () {
+    Route::get('/','show')->name('profile.show');
+    Route::post('/update','update')->name('profile.update');
+
 });

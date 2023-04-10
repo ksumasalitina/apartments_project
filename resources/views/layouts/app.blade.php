@@ -19,7 +19,7 @@
             </div>
             <div style="margin-left: auto">
                 @auth("web")
-                    <v-btn href="" color="blue" text>Вітаємо, {{auth()->user()->first_name}}</v-btn>
+                    <v-btn href="{{route('profile.show')}}" color="blue" text>Вітаємо, {{auth()->user()->first_name}}</v-btn>
                     <v-btn href="{{route('logout')}}" color="red" outlined>Вийти</v-btn>
                 @endauth
                 @guest("web")
