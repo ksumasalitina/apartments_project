@@ -31,7 +31,7 @@ class ProfileUpdateRequest extends FormRequest
             'dob'=>['required',],
             'nationality'=>['required', 'min:2','max:50'],
             'phone'=>['required', 'min:10','max:50'],
-            'avatar' => ['nullable', 'file']
+            //'avatar' => ['nullable', 'file']
         ];
     }
 }

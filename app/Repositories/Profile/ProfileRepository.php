@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileRepository implements ProfileRepositoryInterface
 {
@@ -35,6 +36,16 @@ class ProfileRepository implements ProfileRepositoryInterface
         if($request['email'] != null){
             $data['email'] = $request['email'];
         }
+
+        if(filled($request['avatar'])){
+            if(isset(Auth::user()->avatar)){
+                Storage::delete('avatars/' . Auth::user()->avatar);
+            }
+            $fileName = time().'.'.$request['avatar']->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('avatars', $request['avatar'],$fileName);
+            $data['avatar'] = $fileName;
+        }
+
 
         return User::query()->where('id', Auth::id())->update($data);
     }

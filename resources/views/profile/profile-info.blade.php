@@ -12,13 +12,14 @@
                 <div class="center-box w-75">
                     <div>
                         @isset($user->avatar)
-                            <img src="{{Storage::url($user->avatar)}}" class="round" width="100px" height="100px" ref="avatar" alt="Profile avatar">
-                        @else
+                            <img src="{{Storage::url('avatars/'.$user->avatar)}}" class="round" width="100px" height="100px" ref="avatar" alt="Profile avatar">
+                                @else
                             <img src="{{asset('/img/no-avatar.png')}}" class="round" width="100px" height="100px" ref="avatar" alt="Profile avatar">
                         @endisset
                         <template>
                                 <v-btn class="btn btn-light center-butt" @click="showAddAvatar">Змінити аватар
                                     <v-file-input
+
                                         @change="handleFileUpload"
                                         id="fileInput"
                                         style="display: none;"
@@ -27,9 +28,7 @@
                                 </v-btn>
                             </template>
                     </div>
-                    <div id="div2" class="center-butt d-none">
-                        <input type="file" name="avatar">
-                    </div>
+
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="firstName" class="form-label">Імʼя</label>

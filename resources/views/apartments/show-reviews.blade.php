@@ -74,9 +74,13 @@
                             <v-col>
                                 <v-card width="300" height="200" elevation="4">
                                     <v-card-title>
-                                        <v-avatar color="warning lighten-2" size="40">
+                                        @isset($review->user->avatar)
+                                            <img src="{{Storage::url('avatars/'.$user->avatar)}}" class="round" width="40px" height="40px" alt="Profile avatar">
+                                        @else
+                                            <v-avatar color="warning lighten-2" size="40">
                                             <span>{{mb_substr($review->user->first_name,0,1,'UTF-8')}}{{mb_substr($review->user->last_name,0,1,'UTF-8')}}</span>
                                         </v-avatar>
+                                        @endisset
                                         <h4 class="ml-3 mt-4">{{$review->user->first_name}}<br>
                                             <p class="text--secondary"
                                                style="font-size: small">{{$review->user->nationality}}</p></h4>
