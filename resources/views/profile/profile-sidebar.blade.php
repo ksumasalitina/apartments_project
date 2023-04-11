@@ -22,11 +22,11 @@
                     @endif
                 </li>
                 <li>
-                    @if(Request::is('account/favorites'))
-                        <a href="" class="nav-link active" aria-current="page">
+                    @if(Request::is('favorites'))
+                        <a href="{{route('favorites')}}" class="nav-link active" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"></svg>Вподобання</a>
                     @else
-                        <a href="" class="nav-link link-dark" aria-current="page">
+                        <a href="{{route('favorites')}}" class="nav-link link-dark" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"></svg>Вподобання</a>
                     @endif
                 </li>

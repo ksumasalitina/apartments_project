@@ -56,10 +56,10 @@ class Apartment extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function scopeFindApartments($query, $rooms, $city, $people)
+    public function scopeFindApartments($query, $rooms, $city, $people, $days)
     {
         return $query
-            ->select(DB::raw('apartments.*, min(rooms.cost) as price'))
+            ->select(DB::raw('apartments.*, min(rooms.cost)*'.$days.' as price'))
             ->join('rooms', 'rooms.apartment_id', '=', 'apartments.id')
             ->where('apartments.city_id',$city)
             ->where('rooms.people','>=',$people)

@@ -5,10 +5,11 @@
 @endsection
 
 @section('content')
+
 <main class="d-flex flex-nowrap">
     @include('components.search-sidebar')
     @if(count($apartments)==0)
-    <h3 class="text-center">У ваших вподобаннях нічого немає:(</h3>
+    <h3 class="text-center w-100">У ваших вподобаннях нічого немає:(</h3>
     @else
 
     <div>

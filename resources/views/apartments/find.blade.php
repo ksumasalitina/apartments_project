@@ -8,7 +8,7 @@
     <main class="d-flex flex-nowrap">
         @include('components.search-sidebar')
         @if(count($apartments)==0)
-            <h3 class="text-center">Вибачте, за вашим запитом нічого не знайдено:(</h3>
+            <h3 class="text-center w-100">Вибачте, за вашим запитом нічого не знайдено:(</h3>
         @else
 
             <div>

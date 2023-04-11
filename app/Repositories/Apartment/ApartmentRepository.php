@@ -27,9 +27,12 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         Session::put('start_date', $request['startDate']);
         Session::put('end_date', $request['endDate']);
         Session::put('people', $request['people']);
+        $start = new \DateTime($request['startDate']);
+        $end = new \DateTime($request['endDate']);
+        $diff = $start->diff($end);
 
         $rooms = Booking::query()->findBookedRooms($request['startDate'],$request['endDate'])->get();
-        $result = Apartment::query()->findApartments($rooms,$request['city'],$request['people'])->get();
+        $result = Apartment::query()->findApartments($rooms,$request['city'],$request['people'],$diff->days)->get();
         $cities = City::all();
         $city = City::query()->find($request['city']);
 

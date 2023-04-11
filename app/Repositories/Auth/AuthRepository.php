@@ -30,7 +30,7 @@ class AuthRepository implements AuthRepositoryInterface
         Auth::guard("web")->login($user);
         $request->user()->sendEmailVerificationNotification();
 
-        return redirect(route('home'))->with('message','Вам надіслано email для підтвердження пошти');
+        return redirect(route('home'))/*->with('message','Вам надіслано email для підтвердження пошти')*/;
     }
 
     public function login(LoginRequest $request)
@@ -64,6 +64,6 @@ class AuthRepository implements AuthRepositoryInterface
     public function sendVerificationEmail(Request $request)
     {
         $request->user()->sendEmailVerificationNotification();
-        return back()->with('message', 'Email для підтвердження надіслано');
+        return back()/*->with('message', 'Email для підтвердження надіслано')*/;
     }
 }
