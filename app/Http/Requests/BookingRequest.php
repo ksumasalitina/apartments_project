@@ -29,7 +29,6 @@ class BookingRequest extends FormRequest
             'guest_email' => ['required', 'string', 'email'],
             'apartment_id' => ['required', 'integer'],
             'room_id' => ['required', 'integer'],
-            'total' => ['required'],
             'notice' => ['nullable', 'string', 'max:500']
         ];
     }

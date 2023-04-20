@@ -70,7 +70,6 @@
 
                         <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
                         <input type="hidden" name="room_id" value="{{$room->id}}">
-                        <input type="hidden" name="total" value="{{$total}}">
 
                         <v-row class="p-3 d-flex justify-content-end">
                             <v-col>

@@ -88,7 +88,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
         if(Session::get('start_date')){
             $bookedRooms = Booking::query()->findBookedRooms(Session::get('start_date'), Session::get('end_date'))->get();
-            $rooms = Room::query()->findAvailableRooms($id, $bookedRooms)->get();
+            $rooms = Room::query()->findAvailableRooms($id, $bookedRooms)->orderBy('people')->get();
         }
 
         return ['apartment' => $apartment, 'cities' => $cities, 'rooms' => $rooms];
