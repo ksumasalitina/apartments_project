@@ -10,6 +10,8 @@ use App\Repositories\Favorite\FavoriteRepository;
 use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use App\Repositories\Profile\ProfileRepository;
 use App\Repositories\Profile\ProfileRepositoryInterface;
+use App\Repositories\Booking\BookingRepository;
+use App\Repositories\Booking\BookingRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -25,6 +27,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(AuthRepositoryInterface::class,AuthRepository::class);
         $this->app->bind(FavoriteRepositoryInterface::class,FavoriteRepository::class);
         $this->app->bind(ProfileRepositoryInterface::class,ProfileRepository::class);
+        $this->app->bind(BookingRepositoryInterface::class,BookingRepository::class);
+
     }
 
     /**

@@ -11,13 +11,9 @@ class Booking extends Model
 
     protected $fillable = [
         'user_id', 'apartment_id', 'room_id',
+        'guest_firstname', 'guest_lastname', 'guest_email',
         'check_in', 'check_out',
-        'people', 'total', 'status'
-    ];
-
-    protected $casts = [
-        'check_in' => 'datetime',
-        'check_out' => 'datetime',
+        'people', 'total', 'status', 'notice'
     ];
 
     public function user()
@@ -48,4 +44,13 @@ class Booking extends Model
             ->where('check_out', '>=', $start_date)
             ->where('check_in', '<=', $end_date);
     }
+
+    public function scopeCheckAvailability($query, $room_id, $start_date, $end_date)
+    {
+        return $query->select('id')
+            ->where('check_out', '>=', $start_date)
+            ->where('check_in', '<=', $end_date)
+            ->where('room_id', $room_id);
+    }
 }
+

@@ -1,5 +1,10 @@
 @section('rooms')
     @if($rooms)
+        @if(count($rooms)==0)
+            <div class="alert alert-danger w-75 center-box">
+                <p align="center">Нажаль, вільних номерів за обраними датами немає :(</p>
+            </div>
+        @else
         <div id="rooms" style="margin-top: 5%">
             <h2 class="find-apart rooms-header">Доступні номери для бронювання:</h2>
             <div >
@@ -21,7 +26,7 @@
                             <td align="center">{{$r->people}}</td>
                             <td>{{$r->cost}}</td>
                             <td>
-                                <v-btn color="red" outlined>Забронювати</v-btn>
+                                <v-btn href="{{route('booking.page',$r->id)}}" color="red" outlined>Забронювати</v-btn>
                             </td>
                         </tr>
                     @endforeach
@@ -29,7 +34,10 @@
                 </table>
             </div>
         </div>
+        @endif
     @else
-        <h2>Щоб переглянути доступні номери, оберіть дати подорожі</h2>
+        <div class="alert alert-info w-75 center-box">
+            <p align="center">Щоб переглянути доступні номери, оберіть дати подорожі</p>
+        </div>
     @endif
 @show

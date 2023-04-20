@@ -30,6 +30,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         $start = new \DateTime($request['startDate']);
         $end = new \DateTime($request['endDate']);
         $diff = $start->diff($end);
+        Session::put('days', $diff->days);
 
         $rooms = Booking::query()->findBookedRooms($request['startDate'],$request['endDate'])->get();
         $result = Apartment::query()->findApartments($rooms,$request['city'],$request['people'],$diff->days)->get();
@@ -74,6 +75,10 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         if(filled($request['startDate']) && filled($request['endDate'])){
             Session::put('start_date', $request['startDate']);
             Session::put('end_date', $request['endDate']);
+            $start = new \DateTime($request['startDate']);
+            $end = new \DateTime($request['endDate']);
+            $diff = $start->diff($end);
+            Session::put('days', $diff->days);
         }
 
         $apartment = Apartment::query()->findOrFail($id);

@@ -5,6 +5,7 @@ use App\Http\Controllers\ApartmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -57,5 +58,9 @@ Route::controller(ProfileController::class)->middleware('auth')->prefix('profile
     ->group(function () {
     Route::get('/','show')->name('profile.show');
     Route::post('/update','update')->name('profile.update');
+});
 
+Route::controller(BookingController::class)->middleware('auth')->group(function () {
+    Route::get('/book/{id}','showBookingPage')->name('booking.page');
+    Route::post('/book/process','book')->name('booking.process');
 });

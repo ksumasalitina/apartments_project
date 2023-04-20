@@ -39,19 +39,19 @@
                             <label for="lastName" class="form-label">Прізвище</label>
                             <input type="text" class="form-control" id="lastName" name="last_name" value="{{$user->last_name}}">
                         </div>
-                        <div class="col-12" id="marg-t-15">
+                        <div class="col-12">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="{{$user->email}}">
                         </div>
-                        <div class="col-12" id="marg-t-15">
+                        <div class="col-12">
                             <label for="phone" class="form-label">Номер телефону</label>
                             <input type="text" class="form-control" id="phone" name="phone" value="{{$user->phone}}">
                         </div>
-                        <div class="col-12" id="marg-t-15">
+                        <div class="col-12">
                             <label for="dob" class="form-label">Дата народження</label>
                             <input type="text" class="form-control" id="dob" name="dob" value="{{$user->dob}}">
                         </div>
-                        <div class="col-12" id="marg-t-15">
+                        <div class="col-12">
                             <label for="nationality" class="form-label">Національність</label>
                             <select class="form-control" name="nationality">
                                 <option selected>{{$user->nationality}}</option>

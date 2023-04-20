@@ -7,7 +7,7 @@
 @section('content')
 
 <main class="d-flex flex-nowrap">
-    @include('components.search-sidebar')
+    @include('profile.profile-sidebar')
     @if(count($apartments)==0)
     <h3 class="text-center w-100">У ваших вподобаннях нічого немає:(</h3>
     @else
@@ -47,15 +47,9 @@
                     <p class="card-text mb-3">{{$x->description}}</p>
                     <div class="d-flex justify-content-end">
                         <div class="in-block mr-2">
-                            @if(Auth::user()->favorites()->where('apartment_id',$x->id)->exists())
                             <v-btn href="{{route('favorite.remove',$x->id)}}" text>
                                 <v-icon>mdi-heart</v-icon>
                             </v-btn>
-                            @else
-                            <v-btn href="{{route('favorite.add',$x->id)}}" text>
-                                <v-icon>mdi-heart-outline</v-icon>
-                            </v-btn>
-                            @endif
                         </div>
                         <div class="in-block">
                             <v-btn color="black" href="{{route('show',$x->id)}}" outlined target="_blank">Переглянути</v-btn>
