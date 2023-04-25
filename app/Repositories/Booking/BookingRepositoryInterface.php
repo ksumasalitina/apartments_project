@@ -8,4 +8,5 @@ interface BookingRepositoryInterface
 {
     public function showBookingProcessInfo($room_id);
     public function addBooking(BookingRequest $request);
+    public function getBookingsHistory();
 }

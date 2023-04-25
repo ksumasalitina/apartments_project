@@ -48,8 +48,7 @@ class BookingRepository implements BookingRepositoryInterface
                     'notice' => $request->notice
                 ]);
 
-                $apartment = Apartment::query()->findOrFail($request->apartment_id);
-                Mail::to($request->guest_email)->send(new NewBooking($booking,$apartment));
+                Mail::to($request->guest_email)->send(new NewBooking($booking));
 
                 return view('booking.booking-success');
             } else {
@@ -61,5 +60,10 @@ class BookingRepository implements BookingRepositoryInterface
         } else {
             return redirect(route('show', $request->apartment_id));
         }
+    }
+
+    public function getBookingsHistory()
+    {
+        return ['bookings' => Booking::query()->where('user_id',Auth::id())->orderByDesc('created_at')->get()];
     }
 }

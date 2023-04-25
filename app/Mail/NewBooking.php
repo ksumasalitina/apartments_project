@@ -16,17 +16,15 @@ class NewBooking extends Mailable
     use Queueable, SerializesModels;
 
     public $booking;
-    public $apartment;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($booking, $apartment)
+    public function __construct($booking)
     {
         $this->booking = $booking;
-        $this->apartment = $apartment;
     }
 
     /**

@@ -8,6 +8,7 @@ import Vuetify from "vuetify";
 import 'vuetify/dist/vuetify.min.css';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import MapChange from "./components/MapChange";
 import GmapVue from 'gmap-vue';
 import * as frontendCredentials from './env/env';
 
@@ -37,6 +38,8 @@ Vue.use(GmapVue, {
 //Vue.component('find-form', require('./components/FindForm').default);
 
 Vue.component('google-map', require('./components/GoogleMap.vue').default);
+Vue.component('map-change', require('./components/MapChange.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -52,10 +55,9 @@ const app = new Vue({
             visibility: false,
             prev: 1,
             price: [1,1000],
+            facilities: [],
             rate: null,
-            stars: null,
-            url: null,
-            img: null
+            stars: null
         }
     },
 
@@ -104,9 +106,13 @@ const app = new Vue({
 
         handleFileUpload(image) {
             let url = URL.createObjectURL(image);
-            //document.getElementById('avatar').src = url;
             this.$refs.avatar.src = url;
             console.log(url);
+        },
+
+        addFacility(id) {
+            console.log(id);
+            this.facilities.push(id);
         },
 
         datePickerMain() {

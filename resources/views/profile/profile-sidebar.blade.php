@@ -14,10 +14,10 @@
                 </li>
                 <li>
                     @if(Request::is('account/bookings'))
-                        <a href="" class="nav-link active" aria-current="page">
+                        <a href="{{route('booking.history')}}" class="nav-link active" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"></svg>Бронювання</a>
                     @else
-                        <a href="" class="nav-link link-dark" aria-current="page">
+                        <a href="{{route('booking.history')}}" class="nav-link link-dark" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"></svg>Бронювання</a>
                     @endif
                 </li>
@@ -28,6 +28,15 @@
                     @else
                         <a href="{{route('favorites')}}" class="nav-link link-dark" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"></svg>Вподобання</a>
+                    @endif
+                </li>
+                <li>
+                    @if(Request::is('account/apartments'))
+                        <a href="{{route('my-apartments.index')}}" class="nav-link active" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"></svg>Моє житло</a>
+                    @else
+                        <a href="{{route('my-apartments.index')}}" class="nav-link link-dark" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"></svg>Моє житло</a>
                     @endif
                 </li>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ApartmentUserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -63,4 +64,7 @@ Route::controller(ProfileController::class)->middleware('auth')->prefix('profile
 Route::controller(BookingController::class)->middleware('auth')->group(function () {
     Route::get('/book/{id}','showBookingPage')->name('booking.page');
     Route::post('/book/process','book')->name('booking.process');
+    Route::get('/account/bookings','bookingHistory')->name('booking.history');
 });
+
+Route::resource('my-apartments',ApartmentUserController::class)->middleware('auth');

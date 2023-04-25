@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class UserSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for($i=0; $i<11; $i++) {
+        /*for($i=0; $i<11; $i++) {
             DB::table('users')->insert([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
@@ -40,6 +41,10 @@ class UserSeeder extends Seeder
             'phone' => $faker->phoneNumber,
             'nationality' => $faker->country,
             'is_admin' => true
-        ]);
+        ]);*/
+
+        $user = User::query()->findOrFail(13);
+        $user->apartments()->attach(43);
+        $user->apartments()->attach(4);
     }
 }

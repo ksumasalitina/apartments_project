@@ -30,7 +30,7 @@
         </div>
     </v-app-bar>
     <v-main class="mt-5">
-        <div id="app">
+        <div id="app" style="min-height: 500px">
             @if ($message = Session::get('message'))
                 <div class="alert alert-success w-75 center-box">
                     <p align="center">{{ $message }}</p>

@@ -11,13 +11,14 @@ class Apartment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'city_id',
+        'name', 'type', 'city_id',
         'building', 'street',
         'postcode', 'email',
         'phone', 'stars',
         'image_1', 'image_2', 'image_3',
         'description',
-        'rate', 'comfort', 'clean', 'staff', 'location'
+        'rate', 'comfort', 'clean', 'staff', 'location',
+        'latitude', 'longitude'
     ];
 
     public function facilities()
