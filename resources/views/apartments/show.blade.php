@@ -48,6 +48,8 @@
                 <div class="col-auto d-flex">
                     <img src="{{$apartment->image_1}}" width="450" height="400" alt="Hotel photo"
                          class="d-flex align-items-center"/>
+{{--                    <img src="{{Storage::url('apartments/'.$apartment->image_1)}}" width="450" height="400" alt="Hotel photo"
+                         class="d-flex align-items-center"/>--}}
                 </div>
                 <div class="col-auto align-items-center">
                     <img src="{{$apartment->image_2}}" width="225" height="190" alt="Hotel photo" class="mb-4"/><br>

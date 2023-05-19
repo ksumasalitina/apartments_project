@@ -57,7 +57,7 @@ class ApartmentUserRepository implements ApartmentUserRepositoryInterface
 
         $apartment->users()->attach(Auth::id());
 
-        dd($apartment);
+        return redirect(route('room.create',$apartment->id));
     }
 
     public function getBookings($id)

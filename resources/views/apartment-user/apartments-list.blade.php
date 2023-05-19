@@ -24,13 +24,16 @@
                     <td><h5>{{$apartment->name}}</h5></td>
                     <td>{{$apartment->city->city}}</td>
                     <td><p style="color: red">{{$apartment->books}}</p></td>
-                    <td width="25%">
+                    <td width="40%">
                         <v-row>
                             <v-col>
                                 <v-btn color="yellow" href="{{route('show',$apartment->id)}}">Переглянути</v-btn>
                             </v-col>
                             <v-col>
-                                <v-btn color="red" href="{{route('my-apartments.show',$apartment->id)}}">Бронювання</v-btn>
+                                <v-btn color="blue" dark href="{{route('room.create',$apartment->id)}}">Додати кімнати</v-btn>
+                            </v-col>
+                            <v-col>
+                                <v-btn color="red" dark href="{{route('my-apartments.show',$apartment->id)}}">Бронювання</v-btn>
                             </v-col>
                         </v-row>
                     </td>

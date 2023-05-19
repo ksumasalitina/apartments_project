@@ -9,7 +9,7 @@
         <h2 align="center">Нове житло</h2>
         <v-layout justify-center>
             <v-flex xs4>
-                @include('apartment-user.form-errors')
+                @include('apartment-user.apartment-errors')
                 <form action="{{route('my-apartments.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12" id="marg-t-15">

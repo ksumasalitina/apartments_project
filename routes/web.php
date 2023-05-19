@@ -7,6 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ApartmentUserController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -68,3 +69,8 @@ Route::controller(BookingController::class)->middleware('auth')->group(function 
 });
 
 Route::resource('my-apartments',ApartmentUserController::class)->middleware('auth');
+
+Route::controller(RoomController::class)->middleware('auth')->group(function () {
+    Route::get('/add/room/{id}','create')->name('room.create');
+    Route::post('/add/room','store')->name('room.store');
+});

@@ -57,6 +57,7 @@ const app = new Vue({
             price: [1,1000],
             facilities: [],
             rate: null,
+            add_room: null,
             stars: null
         }
     },
@@ -113,6 +114,10 @@ const app = new Vue({
         addFacility(id) {
             console.log(id);
             this.facilities.push(id);
+        },
+
+        addRoom() {
+            this.add_room = 1;
         },
 
         datePickerMain() {
