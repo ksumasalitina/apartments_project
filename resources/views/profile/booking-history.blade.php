@@ -11,7 +11,7 @@
             @foreach($bookings as $b)
                 @if($b->status=='processing')
                     @php($color = 'blue')
-                @elseif($b->status=='submitted')
+                @elseif($b->status=='confirmed')
                     @php($color = 'green')
                 @elseif($b->status=='canceled')
                     @php($color = 'red')

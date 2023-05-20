@@ -4,6 +4,7 @@ namespace App\Repositories\ApartmentUser;
 
 use App\Http\Requests\ApartmentRequest;
 use App\Models\Apartment;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -62,6 +63,7 @@ class ApartmentUserRepository implements ApartmentUserRepositoryInterface
 
     public function getBookings($id)
     {
-        // TODO: Implement getBookings() method.
+        return ['bookings' => Booking::query()->where('apartment_id',$id)->get(),
+                'apartment' => Apartment::query()->select('name')->where('id',$id)->first()];
     }
 }

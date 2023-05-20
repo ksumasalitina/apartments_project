@@ -58,7 +58,9 @@ const app = new Vue({
             facilities: [],
             rate: null,
             add_room: null,
-            stars: null
+            stars: null,
+            show_booking: false,
+            booking_status: 'processing'
         }
     },
 

@@ -8,6 +8,7 @@ use App\Models\Apartment;
 use App\Models\Booking;
 use App\Models\Room;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -65,5 +66,12 @@ class BookingRepository implements BookingRepositoryInterface
     public function getBookingsHistory()
     {
         return ['bookings' => Booking::query()->where('user_id',Auth::id())->orderByDesc('created_at')->get()];
+    }
+
+    public function updateBookingStatus($id, Request $request)
+    {
+        Booking::query()->where('id',$id)->update($request->only(['status']));
+
+        return redirect()->back();
     }
 }

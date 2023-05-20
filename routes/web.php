@@ -66,6 +66,7 @@ Route::controller(BookingController::class)->middleware('auth')->group(function 
     Route::get('/book/{id}','showBookingPage')->name('booking.page');
     Route::post('/book/process','book')->name('booking.process');
     Route::get('/account/bookings','bookingHistory')->name('booking.history');
+    Route::post('/bookings/update/{id}','update')->name('booking.update.status');
 });
 
 Route::resource('my-apartments',ApartmentUserController::class)->middleware('auth');

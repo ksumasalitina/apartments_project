@@ -40,4 +40,9 @@ class BookingController extends Controller
     {
         return view('profile.booking-history', $this->bookingRepository->getBookingsHistory());
     }
+
+    public function update($id, Request $request)
+    {
+        return $this->bookingRepository->updateBookingStatus($id, $request);
+    }
 }
