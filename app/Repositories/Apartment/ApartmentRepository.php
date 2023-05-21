@@ -43,7 +43,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
     public function filter(Request $request)
     {
         $rooms = Booking::query()->findBookedRooms(Session::get('start_date'), Session::get('end_date'))->get();
-        $result = Apartment::query()->findApartments($rooms, Session::get('city'), Session::get('people'));
+        $result = Apartment::query()->findApartments($rooms, Session::get('city'), Session::get('people'), Session::get('days'));
         $cities = City::all();
         $city = City::query()->find(Session::get('city'));
 
@@ -52,6 +52,7 @@ class ApartmentRepository implements ApartmentRepositoryInterface
             $request['rate'] = null;
             $request['stars'] = null;
             $request['sort'] = null;
+            $request['type'] = null;
         }
 
         if(filled($request['price'])) {
@@ -65,6 +66,9 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         }
         if(filled($request['sort'])) {
             $result = $result->sortBy($request['sort']);
+        }
+        if(filled($request['type'])) {
+            $result = $result->filterByType($request['type']);
         }
 
         return ['apartments' => $result->get(), 'cities' => $cities, 'city' => $city];

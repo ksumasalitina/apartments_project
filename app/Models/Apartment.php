@@ -113,4 +113,9 @@ class Apartment extends Model
     {
         return $query->where('stars', $param);
     }
+
+    public function scopeFilterByType($query, $param)
+    {
+        return $query->where('type', $param);
+    }
 }
