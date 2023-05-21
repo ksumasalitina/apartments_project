@@ -3,7 +3,7 @@
         <form action="{{route('filter')}}" method="GET">
             @csrf
             <v-row>
-                <v-col cols="5">
+                <v-col cols="4">
                     <p><b>Сортувати</b></p>
                     <v-radio-group name="sort">
                         <v-radio label="Ціна (за спаданням)" value="price-descending"></v-radio>
@@ -16,8 +16,18 @@
                         <v-radio label="Обслуговування" value="staff"></v-radio>
                     </v-radio-group>
                 </v-col>
-                <v-col></v-col>
-                <v-col cols="6">
+
+                <v-col cols="3">
+                    <p><b>Тип помешкання</b></p>
+                    <v-radio-group name="type">
+                        <v-radio label="Готель" value="hotel"></v-radio>
+                        <v-radio label="Хостел" value="hostel"></v-radio>
+                        <v-radio label="Квартира" value="flat"></v-radio>
+                    </v-radio-group>
+                </v-col>
+
+<!--                <v-col></v-col>-->
+                <v-col cols="5">
                     <p align="end"><b>Фільтри</b></p>
                     <v-range-slider
                         label="Ціна"
@@ -30,7 +40,7 @@
                     ></v-range-slider>
                     <input type="hidden" name="price" id="price">
                     <v-slider
-                        label="Мінімальний рейтинг"
+                        label="Рейтинг від"
                         v-model="rate"
                         @input="filterRate"
                         max="10"
