@@ -63,7 +63,7 @@ class ApartmentUserRepository implements ApartmentUserRepositoryInterface
 
     public function getBookings($id)
     {
-        return ['bookings' => Booking::query()->where('apartment_id',$id)->get(),
+        return ['bookings' => Booking::query()->where('apartment_id',$id)->orderByDesc('created_at')->get(),
                 'apartment' => Apartment::query()->select('name')->where('id',$id)->first()];
     }
 }

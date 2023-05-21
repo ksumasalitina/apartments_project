@@ -67,11 +67,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Дата заїзду</b></td>
-                                                    <td>{{$booking->check_in}}</td>
+                                                    <td>{{date_format(date_create($booking->check_in), 'd-m-Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Дата виїзду</b></td>
-                                                    <td>{{$booking->check_out}}</td>
+                                                    <td>{{date_format(date_create($booking->check_out), 'd-m-Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Кількість людей</b></td>
@@ -88,6 +88,10 @@
                                                 <tr>
                                                     <td><b>Сума</b></td>
                                                     <td>{{$booking->total}} UAH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Дата бронювання</b></td>
+                                                    <td>{{date_format(date_create($booking->created_at), 'd-m-Y')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Статус</b></td>
