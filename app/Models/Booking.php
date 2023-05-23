@@ -46,15 +46,15 @@ class Booking extends Model
     public function scopeFindBookedRooms($query, $start_date, $end_date)
     {
         return $query->select('room_id')
-            ->where('check_out', '>=', $start_date)
-            ->where('check_in', '<=', $end_date);
+            ->where('check_in','<=',date('Y-m-d', strtotime($end_date)))
+            ->where('check_out','>=',date('Y-m-d', strtotime($start_date)));
     }
 
     public function scopeCheckAvailability($query, $room_id, $start_date, $end_date)
     {
         return $query->select('id')
-            ->where('check_out', '>=', $start_date)
-            ->where('check_in', '<=', $end_date)
+            ->where('check_out', '>=', date('Y-m-d', strtotime($start_date)))
+            ->where('check_in', '<=', date('Y-m-d', strtotime($end_date)))
             ->where('room_id', $room_id);
     }
 }

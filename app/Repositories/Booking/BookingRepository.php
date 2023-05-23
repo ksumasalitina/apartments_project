@@ -4,6 +4,7 @@ namespace App\Repositories\Booking;
 
 use App\Http\Requests\BookingRequest;
 use App\Mail\NewBooking;
+use App\Mail\NewBookingForOwner;
 use App\Models\Apartment;
 use App\Models\Booking;
 use App\Models\Room;
@@ -50,6 +51,11 @@ class BookingRepository implements BookingRepositoryInterface
                 ]);
 
                 Mail::to($request->guest_email)->send(new NewBooking($booking));
+
+                foreach ($booking->apartment->users as $owner) {
+                    Mail::to($owner->email)->send(new NewBookingForOwner($booking));
+                }
+
 
                 return view('booking.booking-success');
             } else {

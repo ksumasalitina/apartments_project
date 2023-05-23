@@ -2,8 +2,6 @@
 @section('content')
     <h1 style="text-align: center"><b>Ваше бронювання успішне</b></h1>
     <div>
-        <img src="https://media.istockphoto.com/vectors/hotel-icon-vector-vector-id926478812?k=6&m=926478812&s=170667a&w=0&h=hGL1VhgghSnzZtRGHwCPbAJQwRr23fKZdkoVfxMPzeg="
-             width="400px" height="270px" alt="Photo">
         <h2>Готель <em>{{$booking->apartment->name}}</em></h2>
         <p>{{$booking->apartment->email}}</p>
     </div>
@@ -27,7 +25,7 @@
     <hr>
     <div>
         <h2>До сплати</h2>
-        <p>{{$booking->total}}</p>
+        <p>{{$booking->total}} UAH</p>
     </div>
     <h2 class="footer" ><b>Бажаємо Вам гарного відпочинку!</b></h2>
 @endsection
