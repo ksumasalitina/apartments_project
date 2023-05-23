@@ -40,12 +40,8 @@
                 <td><b>Дата бронювання</b></td>
                 <td>{{date_format(date_create($booking->created_at), 'd-m-Y')}}</td>
             </tr>
-            <tr>
-                <td><b>Статус</b></td>
-                <td>{{$booking->status}}</td>
-            </tr>
             </tbody>
         </table>
-        <v-btn href="{{route('my-apartments.show',$booking->apartment->id)}}">Переглянути та змінити статус</v-btn>
+        <a href="http://127.0.0.1:8000/my-apartments/{{$booking->apartment->id}}">Переглянути та змінити статус</a>
     </div>
 @endsection

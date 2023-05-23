@@ -5,6 +5,7 @@ namespace App\Repositories\Booking;
 use App\Http\Requests\BookingRequest;
 use App\Mail\NewBooking;
 use App\Mail\NewBookingForOwner;
+use App\Mail\UpdateStatus;
 use App\Models\Apartment;
 use App\Models\Booking;
 use App\Models\Room;
@@ -76,7 +77,10 @@ class BookingRepository implements BookingRepositoryInterface
 
     public function updateBookingStatus($id, Request $request)
     {
+        $booking = Booking::query()->findOrFail($id);
         Booking::query()->where('id',$id)->update($request->only(['status']));
+
+        Mail::to($booking->guest_email)->send(new UpdateStatus($booking));
 
         return redirect()->back();
     }
