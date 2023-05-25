@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ApartmentUserController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -74,4 +75,10 @@ Route::resource('my-apartments',ApartmentUserController::class)->middleware('aut
 Route::controller(RoomController::class)->middleware('auth')->group(function () {
     Route::get('/add/room/{id}','create')->name('room.create');
     Route::post('/add/room','store')->name('room.store');
+});
+
+Route::controller(ReviewController::class)->middleware('auth')->prefix('review')
+    ->group(function () {
+    Route::get('/create/{id}','create')->name('review.create');
+    Route::post('/add','store')->name('review.store');
 });

@@ -35,16 +35,13 @@
                                 <p class="marg-b-1">Статус: <em style="color: {{$color}}">{{$b->status}}</em></p>
 
                                 <h5 class="marg-b-1">Сума: {{$b->total}}</h5>
+
+                                @if($b->status == "finished")
+                                    <v-btn href="{{route('review.create', $b->apartment_id)}}" color="blue" outlined class="mt-3">Залишити відгук</v-btn>
+                                @endif
                             </div>
                         </v-col>
                     </v-row>
-
-
-                    @if($b->status == "finished")
-                        <div class="but_more mt-3">
-                            <a href="" class="btn btn-outline-dark">Залишити відгук</a>
-                        </div>
-                    @endif
                 </div>
             @endforeach
         </div>

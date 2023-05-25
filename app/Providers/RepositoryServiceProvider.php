@@ -16,6 +16,8 @@ use App\Repositories\ApartmentUser\ApartmentUserRepository;
 use App\Repositories\ApartmentUser\ApartmentUserRepositoryInterface;
 use App\Repositories\Room\RoomRepository;
 use App\Repositories\Room\RoomRepositoryInterface;
+use App\Repositories\Review\ReviewRepository;
+use App\Repositories\Review\ReviewRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -34,6 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BookingRepositoryInterface::class,BookingRepository::class);
         $this->app->bind(ApartmentUserRepositoryInterface::class,ApartmentUserRepository::class);
         $this->app->bind(RoomRepositoryInterface::class,RoomRepository::class);
+        $this->app->bind(ReviewRepositoryInterface::class,ReviewRepository::class);
     }
 
     /**
