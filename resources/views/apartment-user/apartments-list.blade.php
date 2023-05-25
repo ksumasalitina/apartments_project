@@ -33,7 +33,7 @@
                                 <v-btn color="blue" dark href="{{route('room.create',$apartment->id)}}">Додати кімнати</v-btn>
                             </v-col>
                             <v-col>
-                                <v-btn color="red" dark href="{{route('my-apartments.show',$apartment->id)}}">Бронювання</v-btn>
+                                <v-btn color="red" dark href="{{route('bookings.show',$apartment->id)}}">Бронювання</v-btn>
                             </v-col>
                         </v-row>
                     </td>

@@ -57,5 +57,12 @@ class Booking extends Model
             ->where('check_in', '<=', date('Y-m-d', strtotime($end_date)))
             ->where('room_id', $room_id);
     }
+
+    public function scopeSearch($query, $param)
+    {
+        return $query->where('guest_lastname', 'LIKE', "%{$param}%")
+            ->orWhere('guest_firstname', 'LIKE', "%{$param}%")
+            ->orWhere('guest_email', 'LIKE', "%{$param}%");
+    }
 }
 

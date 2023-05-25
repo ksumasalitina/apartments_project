@@ -9,5 +9,5 @@ interface ApartmentUserRepositoryInterface
 {
     public function getApartments();
     public function addApartment(ApartmentRequest $request);
-    public function getBookings($id);
+    public function getBookings($id, Request $request);
 }

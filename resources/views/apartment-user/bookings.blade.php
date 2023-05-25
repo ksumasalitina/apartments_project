@@ -6,7 +6,22 @@
 
 @section('content')
     <div class="p-3">
-        <h2 class="mb-5">{{$apartment->name}}</h2>
+        <form class="mb-3" action="{{route('bookings.show',$apartment->id)}}">
+        <v-row>
+            <v-col>
+                <h2 class="mb-5">{{$apartment->name}}</h2>
+            </v-col>
+            <v-col cols="6">
+                <v-text-field
+                    label="Пошук"
+                    name="param"
+                ></v-text-field>
+            </v-col>
+            <v-col>
+                <v-btn type="submit" color="blue" small fab outlined><v-icon>mdi-magnify</v-icon></v-btn>
+            </v-col>
+        </v-row>
+        </form>
         <table class="table table-striped">
             <thead>
             <tr>

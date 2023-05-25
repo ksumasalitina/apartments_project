@@ -121,6 +121,6 @@ class Apartment extends Model
 
     public function scopeSearch($query, $param)
     {
-        return $query->where('name', 'LIKE', "%{$param}%")->whereOr('description', 'LIKE', "%{$param}%");
+        return $query->where('name', 'LIKE', "%{$param}%")->orWhere('description', 'LIKE', "%{$param}%");
     }
 }

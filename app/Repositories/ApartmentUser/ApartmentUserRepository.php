@@ -61,9 +61,15 @@ class ApartmentUserRepository implements ApartmentUserRepositoryInterface
         return redirect(route('room.create',$apartment->id));
     }
 
-    public function getBookings($id)
+    public function getBookings($id, Request $request)
     {
-        return ['bookings' => Booking::query()->where('apartment_id',$id)->orderByDesc('created_at')->get(),
-                'apartment' => Apartment::query()->select('name')->where('id',$id)->first()];
+        if(filled($request->param)){
+            $bookings = Booking::query()->where('apartment_id',$id)->search($request->param)->get();
+        } else {
+            $bookings = Booking::query()->where('apartment_id',$id)->orderByDesc('created_at')->get();
+        }
+
+        return ['bookings' => $bookings,
+                'apartment' => Apartment::query()->select('id','name')->where('id',$id)->first()];
     }
 }

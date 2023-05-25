@@ -32,8 +32,8 @@ class ApartmentUserController extends Controller
         return $this->repository->addApartment($request);
     }
 
-    public function show($id)
+    public function showBookings($id, Request $request)
     {
-        return view('apartment-user.bookings', $this->repository->getBookings($id));
+        return view('apartment-user.bookings', $this->repository->getBookings($id,$request));
     }
 }

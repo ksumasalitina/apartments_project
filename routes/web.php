@@ -72,6 +72,7 @@ Route::controller(BookingController::class)->middleware('auth')->group(function 
 });
 
 Route::resource('my-apartments',ApartmentUserController::class)->middleware('auth');
+Route::get('/show/bookings/{id}',[ApartmentUserController::class,'showBookings'])->name('bookings.show');
 
 Route::controller(RoomController::class)->middleware('auth')->group(function () {
     Route::get('/add/room/{id}','create')->name('room.create');
