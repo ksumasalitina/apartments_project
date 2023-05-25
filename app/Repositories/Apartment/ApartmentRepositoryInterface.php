@@ -11,4 +11,5 @@ interface ApartmentRepositoryInterface
     public function findApartments(FindRequest $request);
     public function showApartment(Request $request, $id);
     public function filter(Request $request);
+    public function search(Request $request);
 }

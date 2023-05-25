@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FindRequest;
+use App\Models\City;
 use App\Repositories\Apartment\ApartmentRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -38,5 +39,10 @@ class ApartmentController extends Controller
     public function show(Request $request, $id)
     {
         return view('apartments.show', $this->apartmentRepository->showApartment($request, $id));
+    }
+
+    public function search(Request $request)
+    {
+        return view('apartments.search', $this->apartmentRepository->search($request));
     }
 }

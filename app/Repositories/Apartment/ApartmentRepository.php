@@ -97,4 +97,13 @@ class ApartmentRepository implements ApartmentRepositoryInterface
 
         return ['apartment' => $apartment, 'cities' => $cities, 'rooms' => $rooms];
     }
+
+    public function search(Request $request)
+    {
+        $apartments = [];
+        if(filled($request->param)){
+            $apartments = Apartment::query()->search($request->param)->get();
+        }
+        return ['cities' => City::all(), 'apartments' => $apartments];
+    }
 }

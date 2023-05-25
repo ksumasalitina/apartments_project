@@ -18,6 +18,7 @@
                <a href="/"><v-img src="{{asset('/img/logo.png')}}" max-width="250"></v-img></a>
             </div>
             <div style="margin-left: auto">
+                <v-btn href="{{route('search')}}" color="blue" rounded outlined small><v-icon>mdi-magnify</v-icon> Пошук</v-btn>
                 @auth("web")
                     <v-btn href="{{route('profile.show')}}" color="blue" text>Вітаємо, {{auth()->user()->first_name}}</v-btn>
                     <v-btn href="{{route('logout')}}" color="red" outlined>Вийти</v-btn>
