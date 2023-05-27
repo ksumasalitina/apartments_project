@@ -63,6 +63,7 @@ class Apartment extends Model
             ->select(DB::raw('apartments.*, min(rooms.cost)*'.$days.' as price'))
             ->join('rooms', 'rooms.apartment_id', '=', 'apartments.id')
             ->where('apartments.city_id',$city)
+            ->where('apartments.moderation','approved')
             ->where('rooms.people','>=',$people)
             ->whereNotIn('rooms.id', $rooms)
             ->groupBy('apartments.id');
@@ -74,6 +75,7 @@ class Apartment extends Model
             ->select(DB::raw('apartments.*, count(*) as count'))
             ->join('reviews', 'apartment_id', '=', 'apartments.id')
             ->where('apartments.rate','>', 5)
+            ->where('apartments.moderation','approved')
             ->groupBy('apartments.id')
             ->orderByDesc('count');
     }
@@ -121,6 +123,7 @@ class Apartment extends Model
 
     public function scopeSearch($query, $param)
     {
-        return $query->where('name', 'LIKE', "%{$param}%")->orWhere('description', 'LIKE', "%{$param}%");
+        return $query->where('apartments.moderation','approved')
+            ->where('name', 'LIKE', "%{$param}%")->orWhere('description', 'LIKE', "%{$param}%");
     }
 }

@@ -38,7 +38,11 @@ class AuthRepository implements AuthRepositoryInterface
         $credentials = $request->only(['email','password']);
 
         if (Auth::guard("web")->attempt($credentials)) {
-            return redirect(route('home'));
+            if(Auth::user()->is_admin){
+                return redirect('/nova/login');
+            } else {
+                return redirect(route('home'));
+            }
         }
 
         return redirect(route('login'))->withErrors(['email' => "Неправильний email або пароль"]);
