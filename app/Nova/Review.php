@@ -46,7 +46,8 @@ class Review extends Resource
         return [
             ID::make()->sortable(),
 
-            HasOne::make('User')->required(),
+            BelongsTo::make('User')
+                ->display(function ($user) { return $user->email; })->hideFromIndex()->required(),
 
             BelongsTo::make('Apartment')
                 ->display(function ($apartment) { return $apartment->name; })->required()->filterable(),
