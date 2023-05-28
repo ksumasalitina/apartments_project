@@ -12,4 +12,5 @@ interface ApartmentRepositoryInterface
     public function showApartment(Request $request, $id);
     public function filter(Request $request);
     public function search(Request $request);
+    public function random();
 }

@@ -28,6 +28,7 @@ Route::controller(ApartmentController::class)->group(function (){
     Route::get('/filter','filter')->name('filter');
     Route::get('/show/{id}','show')->name('show');
     Route::get('/search/results','search')->name('search');
+    Route::get('/search/random','randomSearch')->name('search.random');
 });
 
 

@@ -63,6 +63,10 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-center mt-3">
+        <v-btn href="{{route('search.random')}}" color="blue" text>Не знаєте куди поїхати? Довірте вибір нам!</v-btn>
+    </div>
+
     <div class="marg-t-15">
         <p class="find-apart font-weight-medium" style="font-size: xx-large; margin-left: 10%">Найкращі пропозиції✨</p>
     </div>

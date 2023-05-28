@@ -106,4 +106,16 @@ class ApartmentRepository implements ApartmentRepositoryInterface
         }
         return ['cities' => City::all(), 'apartments' => $apartments];
     }
+
+    public function random()
+    {
+        $limit = City::query()->select('id')->orderByDesc('id')->first();
+
+        $city_id = rand(1,$limit->id);
+        $city = City::query()->findOrFail($city_id);
+
+        $apartments = Apartment::query()->where('city_id',$city_id)->orderByDesc('rate')->get();
+
+        return ['cities'=>City::all(),'city' => $city, 'apartments' => $apartments];
+    }
 }

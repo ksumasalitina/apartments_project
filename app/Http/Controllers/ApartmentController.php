@@ -45,4 +45,9 @@ class ApartmentController extends Controller
     {
         return view('apartments.search', $this->apartmentRepository->search($request));
     }
+
+    public function randomSearch()
+    {
+        return view('apartments.random-search', $this->apartmentRepository->random());
+    }
 }
