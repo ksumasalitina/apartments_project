@@ -22,7 +22,7 @@
                 <div class="p-3 w-75 bg-light rounded-3 booked_box" style="border: 1px solid {{$color}}">
                     <v-row>
                         <v-col cols="5">
-                            <img src="{{$b->apartment->image_1}}" width="280" height="220">
+                            <img src="{{Storage::url('apartments/'.$b->apartment->image_1)}}" width="280" height="220">
                         </v-col>
                         <v-col>
                             <div class="in-block">

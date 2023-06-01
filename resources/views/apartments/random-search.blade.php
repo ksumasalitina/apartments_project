@@ -23,13 +23,13 @@
                                 <v-carousel height="200" hide-delimiter-background :show-arrows="false"
                                             class="d-flex align-items-center">
                                     <v-carousel-item>
-                                        <img src="{{$x->image_1}}" width="250" height="200" alt="Hotel photo"/>
+                                        <img src="{{Storage::url('apartments/'.$x->image_1)}}" width="250" height="200" alt="Hotel photo"/>
                                     </v-carousel-item>
                                     <v-carousel-item>
-                                        <img src="{{$x->image_2}}" width="250" height="200" alt="Hotel photo"/>
+                                        <img src="{{Storage::url('apartments/'.$x->image_2)}}" width="250" height="200" alt="Hotel photo"/>
                                     </v-carousel-item>
                                     <v-carousel-item>
-                                        <img src="{{$x->image_3}}" width="250" height="200" alt="Hotel photo"/>
+                                        <img src="{{Storage::url('apartments/'.$x->image_3)}}" width="250" height="200" alt="Hotel photo"/>
                                     </v-carousel-item>
                                 </v-carousel>
                             </div>
@@ -45,8 +45,6 @@
                                     @endfor
                                 </div>
                                 <p class="card-text mb-3">{{$x->description}}</p>
-                                <strong class="d-inline-block mb-2 d-flex justify-content-end font-large">{{$x->price}}
-                                    UAH</strong>
                                 <div class="d-flex justify-content-end">
                                     <div class="in-block mr-2">
                                         @if(Auth::check())
