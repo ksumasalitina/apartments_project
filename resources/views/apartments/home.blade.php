@@ -65,6 +65,7 @@
 
     <div class="d-flex justify-content-center mt-3">
         <v-btn href="{{route('search.random')}}" color="blue" text>Не знаєте куди поїхати? Довірте вибір нам!</v-btn>
+        <v-btn href="{{route('companions')}}" color="red" text>Нема з ким поїхати? Знайдіть супутників!</v-btn>
     </div>
 
     <div class="marg-t-15">

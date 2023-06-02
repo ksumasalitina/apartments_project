@@ -59,7 +59,18 @@
                                     <option value="{{$c->name}}">{{$c->name}}</option>
                                 @endforeach
                             </select>
-                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="is_companion" class="form-label">Шукаю супутника</label>
+                            @if($user->is_companion == 0)
+                            <input type="checkbox" id="is_companion" name="is_companion" value="1">
+                            @else
+                                <input type="checkbox" id="is_companion" name="is_companion" value="1" checked>
+                            @endif
+                        </div>
+                        <div class="col-12">
+                            <textarea type="checkbox" class="form-control" placeholder="Напишіть більше про те куди подорожуєте" name="message">{{$user->message}}</textarea>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-danger" id="marg-t-15">Зберегти</button>
                     <span class="alert-danger">

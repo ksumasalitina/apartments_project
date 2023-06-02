@@ -9,6 +9,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ApartmentUserController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -84,4 +85,9 @@ Route::controller(ReviewController::class)->middleware('auth')->prefix('review')
     ->group(function () {
     Route::get('/create/{id}','create')->name('review.create');
     Route::post('/add','store')->name('review.store');
+});
+
+Route::controller(UserController::class)->prefix('users')->group(function () {
+    Route::get('/companions', 'showCompanions')->name('companions');
+    Route::get('/{id}', 'getUser')->name('show.user');
 });

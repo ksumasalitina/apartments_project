@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
 
         for($i=0; $i<11; $i++) {
             DB::table('users')->insert([
-                'id' => $i+1,
+                /*'id' => $i+1,*/
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->email,
@@ -29,11 +29,13 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345678'),
                 'dob' => $faker->date,
                 'phone' => $faker->phoneNumber,
-                'nationality' => $faker->country
+                'nationality' => $faker->country,
+                'is_companion' => 1,
+                'message' => $faker->sentence
             ]);
         }
 
-        DB::table('users')->insert([
+        /*DB::table('users')->insert([
             'id' => 12,
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
@@ -56,7 +58,7 @@ class UserSeeder extends Seeder
             'phone' => $faker->phoneNumber,
             'nationality' => $faker->country,
             'is_admin' => false
-        ]);
+        ]);*/
 
 
     }

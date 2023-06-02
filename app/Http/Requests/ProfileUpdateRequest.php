@@ -31,6 +31,8 @@ class ProfileUpdateRequest extends FormRequest
             'dob'=>['required',],
             'nationality'=>['required', 'min:2','max:50'],
             'phone'=>['required', 'min:10','max:50'],
+            'is_companion' => ['nullable'],
+            'message' => ['nullable', 'string', 'min:2', 'max:100']
             //'avatar' => ['nullable', 'file']
         ];
     }

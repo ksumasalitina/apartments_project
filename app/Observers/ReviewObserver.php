@@ -13,7 +13,7 @@ class ReviewObserver
      * @param \App\Models\Review $review
      * @return void
      */
-    public function created(Review $review)
+   /* public function created(Review $review)
     {
         $apartment = Apartment::query()->findOrFail($review->apartment_id);
 
@@ -32,12 +32,6 @@ class ReviewObserver
         ]);
     }
 
-    /**
-     * Handle the Review "deleted" event.
-     *
-     * @param \App\Models\Review $review
-     * @return void
-     */
     public function deleting(Review $review)
     {
         $apartment = Apartment::query()->findOrFail($review->apartment_id);
@@ -55,5 +49,5 @@ class ReviewObserver
             'staff' => $staff,
             'location' => $location
         ]);
-    }
+    }*/
 }

@@ -74,7 +74,7 @@ class Apartment extends Model
         return $query
             ->select(DB::raw('apartments.*, count(*) as count'))
             ->join('reviews', 'apartment_id', '=', 'apartments.id')
-            ->where('apartments.rate','>', 5)
+            ->where('apartments.rate','>', 7)
             ->where('apartments.moderation','approved')
             ->groupBy('apartments.id')
             ->orderByDesc('count');

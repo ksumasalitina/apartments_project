@@ -30,8 +30,15 @@ class ProfileRepository implements ProfileRepositoryInterface
             'last_name',
             'dob',
             'nationality',
-            'phone'
+            'phone',
+            'message'
         ]);
+
+        if(filled($request->is_companion)) {
+            $data['is_companion'] = 1;
+        } else {
+            $data['is_companion'] = 0;
+        }
 
         if($request['email'] != null){
             $data['email'] = $request['email'];
