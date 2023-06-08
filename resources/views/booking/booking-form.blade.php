@@ -13,7 +13,7 @@
                 <div
                     class="row g-0 rounded-4 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative hotel-box-border">
                     <div class="col-auto d-flex align-items-center">
-                        <img src="{{$apartment->image_1}}" width="250" height="200" alt="Hotel photo"/>
+                        <img src="{{Storage::url('apartments/'.$apartment->image_1)}}" width="250" height="200" alt="Hotel photo"/>
                     </div>
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong
