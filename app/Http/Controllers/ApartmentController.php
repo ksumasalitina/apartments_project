@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Session;
 class ApartmentController extends Controller
 {
     private ApartmentRepositoryInterface $apartmentRepository;
-
     public function __construct(ApartmentRepositoryInterface $apartmentRepository)
     {
         $this->apartmentRepository = $apartmentRepository;
