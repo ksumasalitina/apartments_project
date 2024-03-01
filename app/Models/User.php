@@ -2,33 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+/**
+ * @property int $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $email
+ * @property string $nationality
+ * @property string $avatar
+ * @property boolean $is_companion
+ * @property string $message
+ */
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'email',
-        'password',
-        'dob',
-        'phone',
-        'nationality',
-        'avatar',
-        'is_companion',
-        'message'
-        ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,37 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'email' => 'string',
-        'dob' => 'datetime',
-        'phone' => 'string',
-        'nationality' => 'string',
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-
-    public function favorites()
-    {
-        return $this->belongsToMany(Apartment::class, 'favorites',
-            'user_id', 'apartment_id');
-    }
-
-    public function apartments()
-    {
-        return $this->belongsToMany(Apartment::class);
-    }
-
-    public function isAdmin()
-    {
-        return $this->is_admin;
-    }
 }

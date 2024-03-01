@@ -5,29 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property integer $id
+ * @property integer $apartment_id
+ * @property integer $max_people
+ * @property string $number
+ * @property string $description
+ * @property integer $price
+ * @property array $facilities
+ */
 class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'apartment_id',
-        'people', 'number', 'floor',
-        'cost', 'description', 'beds'
+    protected $guarded = ['id'];
+
+    protected $casts = [
+        'facilities' => 'array'
     ];
-
-    public function apartment()
-    {
-        return $this->belongsTo(Apartment::class);
-    }
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
-
-    public function scopeFindAvailableRooms($query, $apartment, $bookedRooms)
-    {
-        return $query->where('apartment_id', $apartment)
-                    ->whereNotIn('id', $bookedRooms)->distinct();
-    }
 }

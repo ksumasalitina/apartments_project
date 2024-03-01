@@ -2,67 +2,33 @@
 
 namespace App\Models;
 
+use App\Data\BookingStatuses;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $id
+ * @property integer $user_id
+ * @property integer $apartment_id
+ * @property integer $room_id
+ * @property string $checkin_at
+ * @property string $checkout_at
+ * @property integer $people_amount
+ * @property integer $total
+ * @property BookingStatuses $status
+ * @property string $guest_first_name
+ * @property string $guest_last_name
+ * @property string $guest_email
+ * @property string $message
+ */
 class Booking extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
 
-    protected $fillable = [
-        'user_id', 'apartment_id', 'room_id',
-        'guest_firstname', 'guest_lastname', 'guest_email',
-        'check_in', 'check_out',
-        'people', 'total', 'status', 'notice'
-    ];
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'check_in' => 'datetime',
-        'check_out' => 'datetime'
+        'status' => BookingStatuses::class
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function apartment()
-    {
-        return $this->belongsTo(Apartment::class);
-    }
-
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
-
-    /**
-     * Scope a queries.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-
-    public function scopeFindBookedRooms($query, $start_date, $end_date)
-    {
-        return $query->select('room_id')
-            ->where('check_in','<=',date('Y-m-d', strtotime($end_date)))
-            ->where('check_out','>=',date('Y-m-d', strtotime($start_date)));
-    }
-
-    public function scopeCheckAvailability($query, $room_id, $start_date, $end_date)
-    {
-        return $query->select('id')
-            ->where('check_out', '>=', date('Y-m-d', strtotime($start_date)))
-            ->where('check_in', '<=', date('Y-m-d', strtotime($end_date)))
-            ->where('room_id', $room_id);
-    }
-
-    public function scopeSearch($query, $param)
-    {
-        return $query->where('guest_lastname', 'LIKE', "%{$param}%")
-            ->orWhere('guest_firstname', 'LIKE', "%{$param}%")
-            ->orWhere('guest_email', 'LIKE', "%{$param}%");
-    }
 }
-
