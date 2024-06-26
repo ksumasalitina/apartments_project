@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FindRequest;
+use App\Http\Resources\Apartment\IndexResource;
+use App\Http\Resources\CityResource;
+use App\Models\Apartment;
 use App\Models\City;
 use App\Repositories\Apartment\ApartmentRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Inertia\Inertia;
 
 class ApartmentController extends Controller
 {
@@ -16,9 +20,17 @@ class ApartmentController extends Controller
         $this->apartmentRepository = $apartmentRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('apartments.home', $this->apartmentRepository->bestApartments());
+        $request->validate([
+            'city' => ['nullable', 'integer', 'exists:cities,id']
+        ]);
+
+        return Inertia::render('Home', [
+            'cities' => CityResource::collection(City::query()->orderBy('name')->get())->resolve(),
+            'apartments' => IndexResource::collection(Apartment::bestProposals($request->city)->get())->resolve(),
+            'currentCityId' => (int)$request->city
+        ]);
     }
 
     public function find(FindRequest $request)
