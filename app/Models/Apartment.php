@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Data\ApartmentTypes;
 use App\Data\ModerationStatuses;
+use App\ValueObjects\ApartmentRateVO;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property array $images
  * @property array $facilities
  * @property array $rate
+ *
+ * @property Street $street
  */
 class Apartment extends Model
 {
@@ -34,4 +38,25 @@ class Apartment extends Model
         'facilities' => 'array',
         'rate' => 'array'
     ];
+
+    public function street()
+    {
+        return $this->belongsTo(Street::class);
+    }
+
+    public function getRate(): ApartmentRateVO
+    {
+        return ApartmentRateVO::fromArray($this->rate);
+    }
+
+    public function scopeBestProposals(Builder $query, ?int $cityId = null): Builder
+    {
+        if ($cityId) {
+            $query->whereHas('street', fn (Builder $q) => $q->where('city_id', $cityId));
+        }
+
+        $query->orderByDesc('rate->rate');
+
+        return $query;
+    }
 }
